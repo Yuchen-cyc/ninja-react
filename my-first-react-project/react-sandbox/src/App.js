@@ -5,6 +5,7 @@ import Modal from './components/Modal';
 
 function App() {
   const [showEvents, setShowEvents] = useState(true)
+  const [showModals, setShowModals] = useState(true)
 
   const [events, setEvents] = useState([
     {title: "Mario's party bash", id: 1},
@@ -18,6 +19,10 @@ function App() {
         return id !== event.id
       })
     })
+  }
+
+  const handleClose = () => {
+    setShowModals(false)
   }
 
   return (
@@ -43,11 +48,11 @@ function App() {
         </React.Fragment>
       ))}
 
-      <Modal>
+      {showModals && <Modal handleClose={handleClose}>
         <h2>10% Off Coupon Code!!</h2>
         <p>Use the code NINJA10 at the checkout.</p>
         <a href="www.ninja.com">Check out the Website!</a>
-      </Modal>
+      </Modal>}
     </div>
   );
 }
