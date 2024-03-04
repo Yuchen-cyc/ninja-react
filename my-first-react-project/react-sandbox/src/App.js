@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Title from './components/Title';
+import Modal from './components/Modal';
 
 function App() {
   const [showEvents, setShowEvents] = useState(true)
@@ -20,23 +22,32 @@ function App() {
 
   return (
     <div className = "App">
+      <Title title="Mario's Kingdom Events" subtitle="All the latest events in Mario Kingdom"/>
+      <Title title="Bowser's Kingdom Events" subtitle="All the latest events in Bowser's Kingdom"/>
+
       {showEvents && (
-        <div>
+        <>
           <button onClick={() => setShowEvents(false)}>Hide Events</button>
-        </div>
+        </>
       )}
       {!showEvents && (
-        <div>
+        <>
           <button onClick={() => setShowEvents(true)}>Show Events</button>
-        </div>
+        </>
       )}
 
       {showEvents && events.map((event, index) => (
-        <div key={event.id}>
+        <React.Fragment key={event.id}>
           <h2>{index + 1} - {event.title}</h2>
           <button onClick={() => handleClick(event.id)}>Delete Event</button>
-        </div>
+        </React.Fragment>
       ))}
+
+      <Modal>
+        <h2>10% Off Coupon Code!!</h2>
+        <p>Use the code NINJA10 at the checkout.</p>
+        <a href="www.ninja.com">Check out the Website!</a>
+      </Modal>
     </div>
   );
 }
