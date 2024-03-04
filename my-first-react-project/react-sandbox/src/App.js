@@ -5,7 +5,7 @@ import Modal from './components/Modal';
 
 function App() {
   const [showEvents, setShowEvents] = useState(true)
-  const [showModals, setShowModals] = useState(true)
+  const [showModals, setShowModals] = useState(false)
 
   const [events, setEvents] = useState([
     {title: "Mario's party bash", id: 1},
@@ -24,6 +24,10 @@ function App() {
   const handleClose = () => {
     setShowModals(false)
   }
+
+  // const handleOpen = () => {
+  //   setShowModals(true)
+  // }
 
   return (
     <div className = "App">
@@ -53,6 +57,10 @@ function App() {
         <p>Use the code NINJA10 at the checkout.</p>
         <a href="www.ninja.com">Check out the Website!</a>
       </Modal>}
+
+      <div>
+        <button onClick={() => setShowModals(true)}>show pop-up</button>
+      </div>
     </div>
   );
 }
