@@ -3,6 +3,7 @@ import './App.css';
 import Title from './components/Title';
 import Modal from './components/Modal';
 import EventList from './components/EventList';
+import NewEventForm from './components/NewEventForm';
 
 function App() {
   const [showEvents, setShowEvents] = useState(true)
@@ -33,7 +34,6 @@ function App() {
   return (
     <div className = "App">
       <Title title="Mario's Kingdom Events" subtitle="All the latest events in Mario Kingdom"/>
-      <Title title="Bowser's Kingdom Events" subtitle="All the latest events in Bowser's Kingdom"/>
 
       {showEvents && (
         <>
@@ -56,13 +56,11 @@ function App() {
       {showEvents && <EventList events={events} handleClick={handleClick}/>}
 
       {showModals && <Modal handleClose={handleClose} isSalesModal={true}>
-        <h2>10% Off Coupon Code!!</h2>
-        <p>Use the code NINJA10 at the checkout.</p>
-        <a href="www.ninja.com">Check out the Website!</a>
+        <NewEventForm />
       </Modal>}
 
       <div>
-        <button onClick={() => setShowModals(true)}>show pop-up</button>
+        <button onClick={() => setShowModals(true)}>Add New Events</button>
       </div>
     </div>
   );
