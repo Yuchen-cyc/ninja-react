@@ -6,6 +6,7 @@ export default function EventList({ events, handleClick }) {
       {events.map((event, index) => (
         <React.Fragment key={event.id}>
           <h2>{index + 1} - {event.title}</h2>
+          <p>{event.date} - {event.location}</p>
           <button onClick={() => handleClick(event.id)}>Delete Event</button>
         </React.Fragment>
       ))}
