@@ -9,11 +9,14 @@ function App() {
   const [showEvents, setShowEvents] = useState(true)
   const [showModals, setShowModals] = useState(false)
 
-  const [events, setEvents] = useState([
-    {title: "Mario's party bash", id: 1},
-    {title: "Bowser's live show", id: 2},
-    {title: "Race on moo moo farm", id: 3}
-  ])
+  const [events, setEvents] = useState([])
+
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+    setShowModals(false)
+  }
 
   const handleClick = (id) => {
     setEvents((prevEvents) => {
@@ -56,7 +59,7 @@ function App() {
       {showEvents && <EventList events={events} handleClick={handleClick}/>}
 
       {showModals && <Modal handleClose={handleClose} isSalesModal={true}>
-        <NewEventForm />
+        <NewEventForm addEvent={addEvent}/>
       </Modal>}
 
       <div>
